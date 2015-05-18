@@ -1,0 +1,33 @@
+{
+  "name": "sails-service-social",
+  "version": "0.1.0",
+  "description": "Service for Sails framework with Social features",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^2.9.25",
+    "fb": "^0.7.0"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "istanbul": "^0.3.14",
+    "mocha": "^2.2.5"
+  },
+  "scripts": {
+    "test": "istanbul cover _mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghaiklor/sails-service-social.git"
+  },
+  "keywords": [
+    "sails",
+    "service",
+    "social"
+  ],
+  "author": "ghaiklor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghaiklor/sails-service-social/issues"
+  },
+  "homepage": "https://github.com/ghaiklor/sails-service-social#readme"
+}
