@@ -7,7 +7,6 @@ Service for Sails framework with social features.
 ## List of supported social networks
 
 - Facebook
-- Twitter
 
 ## Getting Started
 
@@ -42,9 +41,7 @@ module.exports = {
 
 ## Configuration
 
-When you instantiate new instance via `SocialService.create(type, config)` you can provide configuration object with next keys:
-
-`config.accessToken` - {String} Pre-defined access token
+I don't think that here need to configure something.
 
 ## API
 
@@ -53,6 +50,12 @@ Each of social instances has following methods:
 ### getFriends(accessToken)
 
 Get friends from social networks:
+
+`accessToken` - access token received from social network
+
+### getPhotos(accessToken)
+
+Get photos from social networks:
 
 `accessToken` - access token received from social network
 
