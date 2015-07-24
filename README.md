@@ -47,13 +47,13 @@ I don't think that here need to configure something.
 
 Each of social instances has following methods:
 
-### getFriends(accessToken)
+### friends(accessToken)
 
 Get friends from social networks:
 
 `accessToken` - access token received from social network
 
-### getPhotos(accessToken)
+### photos(accessToken)
 
 Get photos from social networks:
 
