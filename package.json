@@ -3,15 +3,6 @@
   "version": "0.1.0",
   "description": "Service for Sails framework with Social features",
   "main": "index.js",
-  "dependencies": {
-    "bluebird": "^2.9.25",
-    "fb": "^0.7.0"
-  },
-  "devDependencies": {
-    "chai": "^2.3.0",
-    "istanbul": "^0.3.14",
-    "mocha": "^2.2.5"
-  },
   "scripts": {
     "test": "istanbul cover _mocha"
   },
@@ -29,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/ghaiklor/sails-service-social/issues"
   },
-  "homepage": "https://github.com/ghaiklor/sails-service-social#readme"
+  "homepage": "https://github.com/ghaiklor/sails-service-social#readme",
+  "dependencies": {
+    "bluebird": "^2.9.25",
+    "fb": "^0.7.0",
+    "lodash": "^3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "istanbul": "^0.3.14",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
+  }
 }
