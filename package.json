@@ -1,6 +1,6 @@
 {
   "name": "sails-service-social",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Service for Sails framework with Social features",
   "main": "index.js",
   "scripts": {
