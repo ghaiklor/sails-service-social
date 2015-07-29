@@ -32,7 +32,7 @@ var facebook = SocialService.create('facebook');
 module.exports = {
   friends: function(req, res) {
     facebook
-      .getFriends(req.param('fb_access_token'))
+      .getFriends('<FB_ACCESS_TOKEN>')
       .then(res.ok)
       .catch(res.serverError);
   }
@@ -41,23 +41,27 @@ module.exports = {
 
 ## Configuration
 
-I don't think that here need to configure something.
+You can save any value what you want in your configuration object.
 
 ## API
 
 Each of social instances has following methods:
 
-### friends(accessToken)
+### getFriends([config])
 
 Get friends from social networks:
 
-`accessToken` - access token received from social network
+`config` - Configuration object:
 
-### photos(accessToken)
+  - `config.accessToken` - access token received from social network
+
+### getPhotos([config])
 
 Get photos from social networks:
 
-`accessToken` - access token received from social network
+`config` - Configuration object:
+
+  - `config.accessToken` - access token received from social network
 
 ## Examples
 
