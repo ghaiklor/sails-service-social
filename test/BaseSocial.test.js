@@ -8,8 +8,10 @@ describe('BaseSocial', function () {
     assert.isFunction(BaseSocial.prototype.set);
     assert.isFunction(BaseSocial.prototype.getProvider);
     assert.isFunction(BaseSocial.prototype.setProvider);
+    assert.isFunction(BaseSocial.prototype.getProfile);
     assert.isFunction(BaseSocial.prototype.getFriends);
     assert.isFunction(BaseSocial.prototype.getPhotos);
+    assert.isFunction(BaseSocial.prototype.getPosts);
   });
 
   it('Should properly make objects configurable', function () {
