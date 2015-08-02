@@ -17,7 +17,7 @@ describe('FacebookSocial', function () {
     fb
       .getProfile()
       .then(function (result) {
-        assert.equal(result, 'RESULT');
+        assert.deepEqual(result, {data: 'RESULT'});
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me');
         assert.deepEqual(fb.getProvider().api.getCall(0).args[1], {fields: ['id', 'name', 'email']});
@@ -40,7 +40,7 @@ describe('FacebookSocial', function () {
     fb
       .getProfile('ACCESS_TOKEN', {fields: ['id', 'name', 'photos']})
       .then(function (result) {
-        assert.equal(result, 'RESULT');
+        assert.deepEqual(result, {data: 'RESULT'});
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me');
         assert.deepEqual(fb.getProvider().api.getCall(0).args[1], {fields: ['id', 'name', 'photos']});
