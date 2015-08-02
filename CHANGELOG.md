@@ -1,5 +1,10 @@
 # Changelog
 
+## Edge version
+
+- Add `getProfile` and `getPosts` methods to interface;
+- Now all the methods accepts accessToken and config -> `getFriends(accessToken, config)`
+
 ## 1.0.0
 
 - Done with Facebook friends and photos;
