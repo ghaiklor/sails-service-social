@@ -41,27 +41,45 @@ module.exports = {
 
 ## Configuration
 
-You can save any value what you want in your configuration object.
+You can store access token in config (but really, why you need that?):
+
+`config.accessToken` - This access token will be used if you don't specify access token in methods arguments;
 
 ## API
 
 Each of social instances has following methods:
 
-### getFriends([config])
+### getProfile([accessToken], [config])
 
-Get friends from social networks:
+Get profile from social network. Returns Promise.
 
-`config` - Configuration object:
+`accessToken` - {String} Access token received from social network
 
-  - `config.accessToken` - access token received from social network
+`config` - {Object} Configuration object with additional options to social API
 
-### getPhotos([config])
+### getFriends([accessToken], [config])
 
-Get photos from social networks:
+Get friends from social network. Returns Promise.
 
-`config` - Configuration object:
+`accessToken` - {String} Access token received from social network
 
-  - `config.accessToken` - access token received from social network
+`config` - {Object} Configuration object with additional options to social API
+
+### getPhotos([accessToken], [config])
+
+Get photos from social network. Returns Promise.
+
+`accessToken` - {String} Access token received from social network
+
+`config` - {Object} Configuration object with additional options to social API
+
+### getPosts([accessToken], [config])
+
+Get posts from social network. Returns Promise.
+
+`accessToken` - {String} Access token received from social network
+
+`config` - {Object} Configuration object with additional options to social API
 
 ## Examples
 
@@ -71,7 +89,7 @@ Get photos from social networks:
 var facebook = SocialService.create('facebook');
 
 facebook
-  .getFriends('<FB_ACCESS_TOKEN>')
+  .getProfile('<FB_ACCESS_TOKEN>', {fields: ['id', 'name', 'email', 'photos']})
   .then(console.log.bind(console))
   .catch(console.error.bind(console));
 ```
