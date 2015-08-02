@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Fix parsing profile from Facebook;
+
 ## 2.0.0
 
 - Add `getProfile` and `getPosts` methods to interface;
