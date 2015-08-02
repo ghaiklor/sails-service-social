@@ -15,7 +15,7 @@ describe('FacebookSocial', function () {
     });
 
     fb
-      .getProfile('ACCESS_TOKEN')
+      .getProfile()
       .then(function (result) {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
@@ -84,7 +84,7 @@ describe('FacebookSocial', function () {
     });
 
     fb
-      .getFriends('ACCESS_TOKEN')
+      .getFriends()
       .then(function (result) {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
@@ -153,7 +153,7 @@ describe('FacebookSocial', function () {
     });
 
     fb
-      .getPhotos('ACCESS_TOKEN')
+      .getPhotos()
       .then(function (result) {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
@@ -222,7 +222,7 @@ describe('FacebookSocial', function () {
     });
 
     fb
-      .getPosts('ACCESS_TOKEN')
+      .getPosts()
       .then(function (result) {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
