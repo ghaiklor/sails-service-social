@@ -7,7 +7,7 @@ var social = {
 /**
  * Create instance of social service
  * @param {String} type
- * @param {Object} config
+ * @param {Object} [config]
  * @returns {*}
  */
 export default function (type, config) {

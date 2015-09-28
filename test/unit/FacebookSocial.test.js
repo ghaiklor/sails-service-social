@@ -1,22 +1,20 @@
-var assert = require('chai').assert;
-var sinon = require('sinon');
-var FacebookSocial = require('../lib/FacebookSocial');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import FacebookSocial from '../../src/FacebookSocial';
 
-describe('FacebookSocial', function () {
-  it('Should properly export Facebook', function () {
+describe('FacebookSocial', () => {
+  it('Should properly export Facebook', () => {
     assert.isFunction(FacebookSocial);
   });
 
-  it('Should properly get profile', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get profile', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getProfile()
-      .then(function (result) {
+      .then(result => {
         assert.deepEqual(result, {data: 'RESULT'});
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me');
@@ -30,16 +28,14 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly get profile with advanced config', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get profile with advanced config', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getProfile('ACCESS_TOKEN', {fields: ['id', 'name', 'photos']})
-      .then(function (result) {
+      .then(result => {
         assert.deepEqual(result, {data: 'RESULT'});
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me');
@@ -53,17 +49,15 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly reject on get profile', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly reject on get profile', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({error: 'ERROR'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({error: 'ERROR'}));
 
     fb
       .getProfile('ACCESS_TOKEN')
       .then(done)
-      .catch(function (error) {
+      .catch(error => {
         assert.equal(error, 'ERROR');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me');
@@ -76,16 +70,14 @@ describe('FacebookSocial', function () {
       });
   });
 
-  it('Should properly get friends', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get friends', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getFriends()
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/friends');
@@ -99,16 +91,14 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly get friends with advanced config', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get friends with advanced config', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getFriends('ACCESS_TOKEN', {fields: ['id', 'name']})
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/friends');
@@ -122,17 +112,15 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly reject on get friends', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly reject on get friends', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({error: 'ERROR'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({error: 'ERROR'}));
 
     fb
       .getFriends('ACCESS_TOKEN')
       .then(done)
-      .catch(function (error) {
+      .catch(error => {
         assert.equal(error, 'ERROR');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/friends');
@@ -145,16 +133,14 @@ describe('FacebookSocial', function () {
       });
   });
 
-  it('Should properly get photos', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get photos', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getPhotos()
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/photos');
@@ -168,16 +154,14 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly get photos with advanced config', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get photos with advanced config', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getPhotos('ACCESS_TOKEN', {fields: ['id', 'name']})
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/photos');
@@ -191,17 +175,15 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly reject on get photos', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly reject on get photos', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({error: 'ERROR'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({error: 'ERROR'}));
 
     fb
       .getPhotos('ACCESS_TOKEN')
       .then(done)
-      .catch(function (error) {
+      .catch(error => {
         assert.equal(error, 'ERROR');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/photos');
@@ -214,16 +196,14 @@ describe('FacebookSocial', function () {
       });
   });
 
-  it('Should properly get posts', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get posts', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getPosts()
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/posts');
@@ -237,16 +217,14 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly get posts with advanced config', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly get posts with advanced config', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({data: 'RESULT'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({data: 'RESULT'}));
 
     fb
       .getPosts('ACCESS_TOKEN', {fields: ['id', 'name']})
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'RESULT');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/posts');
@@ -260,17 +238,15 @@ describe('FacebookSocial', function () {
       .catch(done);
   });
 
-  it('Should properly reject on get posts', function (done) {
-    var fb = new FacebookSocial();
+  it('Should properly reject on get posts', done => {
+    let fb = new FacebookSocial();
 
-    sinon.stub(fb.getProvider(), 'api', function (url, config, cb) {
-      cb({error: 'ERROR'});
-    });
+    sinon.stub(fb.getProvider(), 'api', (url, config, cb) => cb({error: 'ERROR'}));
 
     fb
       .getPosts('ACCESS_TOKEN')
       .then(done)
-      .catch(function (error) {
+      .catch(error => {
         assert.equal(error, 'ERROR');
         assert.ok(fb.getProvider().api.calledOnce);
         assert.equal(fb.getProvider().api.getCall(0).args[0], 'me/posts');
