@@ -1,6 +1,13 @@
 # sails-service-social
 
-![Build Status](https://img.shields.io/travis/ghaiklor/sails-service-social.svg) ![Coverage](https://img.shields.io/coveralls/ghaiklor/sails-service-social.svg) ![Downloads](https://img.shields.io/npm/dm/sails-service-social.svg) ![npm version](https://img.shields.io/npm/v/sails-service-social.svg) ![dependencies](https://img.shields.io/david/ghaiklor/sails-service-social.svg) ![dev dependencies](https://img.shields.io/david/dev/ghaiklor/sails-service-social.svg) ![License](https://img.shields.io/npm/l/sails-service-social.svg)
+![Build Status](https://img.shields.io/travis/ghaiklor/sails-service-social.svg)
+![Coverage](https://img.shields.io/coveralls/ghaiklor/sails-service-social.svg)
+![Downloads](https://img.shields.io/npm/dm/sails-service-social.svg)
+![Downloads](https://img.shields.io/npm/dt/sails-service-social.svg)
+![npm version](https://img.shields.io/npm/v/sails-service-social.svg)
+![dependencies](https://img.shields.io/david/ghaiklor/sails-service-social.svg)
+![dev dependencies](https://img.shields.io/david/dev/ghaiklor/sails-service-social.svg)
+![License](https://img.shields.io/npm/l/sails-service-social.svg)
 
 Service for Sails framework with social features.
 
@@ -16,25 +23,21 @@ Install this module.
 npm install sails-service-social
 ```
 
-Then require it in your service.
+Then require it in your service and create social instance.
 
 ```javascript
 // api/services/SocialService.js
-module.exports = require('sails-service-social');
-```
+import SocialService from 'sails-service-social';
 
-That's it, you can create social instances for your needs in your project.
+export default SocialService('facebook');
 
-```javascript
 // api/controllers/SocialController.js
-var facebook = SocialService.create('facebook');
-
-module.exports = {
+export default {
   friends: function(req, res) {
-    facebook
+    SocialService
       .getFriends('<FB_ACCESS_TOKEN>')
       .then(res.ok)
-      .catch(res.serverError);
+      .catch(res.negotiate);
   }
 };
 ```
@@ -86,7 +89,7 @@ Get posts from social network. Returns Promise.
 ### FacebookSocial
 
 ```javascript
-var facebook = SocialService.create('facebook');
+let facebook = SocialService('facebook');
 
 facebook
   .getProfile('<FB_ACCESS_TOKEN>', {fields: ['id', 'name', 'email', 'photos']})
