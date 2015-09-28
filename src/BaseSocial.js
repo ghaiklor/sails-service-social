@@ -1,59 +1,48 @@
-var _ = require('lodash');
+import _ from 'lodash';
 
-/**
- * Create base social instance
- * @param {Object} [_config]
- * @constructor
- */
-function BaseSocial(_config) {
-  this._config = {};
+export default class BaseSocial {
+  constructor(_config) {
+    this._config = {};
+    this._provider = {};
 
-  _.forOwn(_config, function (value, key) {
-    this.set(key, value);
-  }.bind(this));
+    _.assign(this._config, _config);
+  }
+
+  /**
+   * Get configuration value
+   * @param {String} [path]
+   * @returns {*}
+   */
+  get(path) {
+    return typeof path === 'undefined' ? this._config : _.get(this._config, path);
+  }
+
+  /**
+   * Set configuration value
+   * @param {String} path
+   * @param {*} value
+   * @returns {BaseSocial}
+   */
+  set(path, value) {
+    _.set(this._config, path, value);
+    return this;
+  }
+
+  /**
+   * Get provider for sending notifications
+   * @returns {*}
+   */
+  getProvider() {
+    return this._provider;
+  }
+
+  /**
+   * Set new provider to this pusher
+   * @param {*} provider
+   * @returns {BaseSocial}
+   */
+  setProvider(provider) {
+    this._provider = provider;
+    return this;
+  }
 }
-
-/**
- * Get configuration value
- * @param {String} [path]
- * @returns {*}
- */
-BaseSocial.prototype.get = function (path) {
-  return typeof path === 'undefined' ? this._config : _.get(this._config, path);
-};
-
-/**
- * Set configuration value
- * @param {String} path
- * @param {*} value
- * @returns {BaseSocial}
- */
-BaseSocial.prototype.set = function (path, value) {
-  _.set(this._config, path, value);
-  return this;
-};
-
-/**
- * Get provider for sending notifications
- * @returns {*}
- */
-BaseSocial.prototype.getProvider = function () {
-  return this._provider;
-};
-
-/**
- * Set new provider to this pusher
- * @param {*} provider
- * @returns {BaseSocial}
- */
-BaseSocial.prototype.setProvider = function (provider) {
-  this._provider = provider;
-  return this;
-};
-
-BaseSocial.prototype.getProfile = _;
-BaseSocial.prototype.getFriends = _;
-BaseSocial.prototype.getPhotos = _;
-BaseSocial.prototype.getPosts = _;
-
-module.exports = BaseSocial;
