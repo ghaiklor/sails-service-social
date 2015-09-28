@@ -1,21 +1,19 @@
+import FacebookSocial from './FacebookSocial';
+
 var social = {
-  facebook: require('./FacebookSocial')
+  facebook: FacebookSocial
 };
 
-module.exports = {
-  /**
-   * Create instance of social service
-   * @param {String} type
-   * @param {Object} config
-   * @returns {*}
-   */
-  create: function (type, config) {
-    if (social[type.toLowerCase()] instanceof Function) {
-      return new social[type.toLowerCase()](config);
-    } else {
-      throw new Error('Unrecognized type -> ' + type);
-    }
-  },
-
-  FacebookSocial: social.facebook
-};
+/**
+ * Create instance of social service
+ * @param {String} type
+ * @param {Object} config
+ * @returns {*}
+ */
+export default function (type, config) {
+  if (social[type.toLowerCase()] instanceof Function) {
+    return new social[type.toLowerCase()](config);
+  } else {
+    throw new Error('Unrecognized type -> ' + type);
+  }
+}
