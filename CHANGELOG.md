@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0
+
+- Migration from ES5 to ES6 syntax;
+- Remove `.create()` method from SocialService. SocialService is a function itself now;
+- Update and pin all the dependencies;
+
 ## 2.0.1
 
 - Fix parsing profile from Facebook;
