@@ -35,7 +35,7 @@ describe('BaseSocial', () => {
   it('Should properly get/set provider', () => {
     let social = new BaseSocial();
 
-    assert.notOk(social.getProvider());
+    assert.deepEqual(social.getProvider(), {});
     assert.instanceOf(social.setProvider('PROVIDER'), BaseSocial);
     assert.equal(social.getProvider(), 'PROVIDER');
   });
