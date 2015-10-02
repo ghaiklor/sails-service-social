@@ -1,6 +1,6 @@
 import FacebookSocial from './FacebookSocial';
 
-var social = {
+const social = {
   facebook: FacebookSocial
 };
 
