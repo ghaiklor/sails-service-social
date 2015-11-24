@@ -3,8 +3,8 @@ import fb from 'fb';
 import BaseSocial from './BaseSocial';
 
 export default class FacebookSocial extends BaseSocial {
-  constructor(...args) {
-    super(...args);
+  constructor(config) {
+    super(config);
 
     this.setProvider(fb);
   }
