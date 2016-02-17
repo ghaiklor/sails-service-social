@@ -27,7 +27,7 @@
   "homepage": "https://github.com/ghaiklor/sails-service-social#readme",
   "dependencies": {
     "fb": "1.0.2",
-    "lodash": "4.4.0"
+    "lodash": "4.5.0"
   },
   "devDependencies": {
     "babel-cli": "6.5.1",
