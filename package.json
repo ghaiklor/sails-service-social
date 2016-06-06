@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/ghaiklor/sails-service-social#readme",
   "dependencies": {
-    "fb": "1.1.0",
+    "fb": "1.1.1",
     "lodash": "4.13.1"
   },
   "devDependencies": {
